@@ -1,3 +1,5 @@
+const path = require('path');
+
 const config = {
   projectName: 'taro-blog',
   date: '2022-11-3',
@@ -6,6 +8,9 @@ const config = {
     640: 2.34 / 2,
     750: 1,
     828: 1.81 / 2
+  },
+  alias: {
+    '@': path.resolve(__dirname, '../src')
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
@@ -47,6 +52,7 @@ const config = {
     }
   },
   h5: {
+    esnextModules: ['taro-ui'],
     publicPath: '/',
     staticDirectory: 'static',
     postcss: {
@@ -72,11 +78,11 @@ const config = {
       }
     }
   }
-}
+};
 
-module.exports = function (merge) {
+module.exports = function(merge) {
   if (process.env.NODE_ENV === 'development') {
-    return merge({}, config, require('./dev'))
+    return merge({}, config, require('./dev'));
   }
-  return merge({}, config, require('./prod'))
-}
+  return merge({}, config, require('./prod'));
+};
